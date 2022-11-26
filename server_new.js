@@ -21,40 +21,52 @@ reason : '-', reporter:'REPORTER',  opinion: 'REPORT_OR_SAFE'}
 
 //   http://localhost:3000/showAll?two={"chain_id":"CHAIN_ID", "address":"ADDRESS"}
 app.get("/showAll", cors(), async (req, res) => {
-    var params = req.query;
-    var isTwo = params.hasOwnProperty("two");
-    var rt;
-
     console.log("@@@@@@@@@@@@@@@@@@@@ start showAll @@@@@@@@@@@@@@@@@@@@");
-    console.log(`hasOwnProperty("two") : ${isTwo}`);
 
-    if (isTwo) {
-        rt = await show_all(JSON.parse(params.two));
-    } else {
-        rt = await show_all("none");
+    try {
+        var params = req.query;
+        var isTwo = params.hasOwnProperty("two");
+        var rt;
+
+        console.log(`hasOwnProperty("two") : ${isTwo}`);
+
+        if (isTwo) {
+            rt = await show_all(JSON.parse(params.two));
+        } else {
+            rt = await show_all("none");
+        }
+
+        var temp = JSON.parse(JSON.stringify(rt));
+        temp.result = "길어서생략";
+        console.log(temp);
+    } catch (error) {
+        rt = `@/showAll: ${error.message}`;
     }
-
-    var temp = JSON.parse(JSON.stringify(rt));
-    temp.result = "길어서생략";
-    console.log(temp);
-
     res.send(rt);
+
     console.log("@@@@@@@@@@@@@@@@@@@@ end showAll @@@@@@@@@@@@@@@@@@@@");
 });
 
 //    http://localhost:3000/makeNewReport?newReport={"project_name":"t1", "data":{"chain_id": "eip155:1", "address":"0x11111", "url" : "www.!!!!!"}, "reason" : "scam", "reporter":"0xqqqqq","opinion": "REPORT"}
 app.get("/makeNewReport", cors(), async (req, res) => {
-    var params = req.query;
-    var report_obj = JSON.parse(params.newReport);
-    var rt;
-
     console.log("@@@@@@@@@@@@@@@@@@@@ start makeNewReport @@@@@@@@@@@@@@@@@@@@");
-    console.log(report_obj);
 
-    rt = await new_report(report_obj); //신고성공 or 에러메세지 반환
-    console.log(rt);
+    try {
+        var params = req.query;
+        var report_obj = JSON.parse(params.newReport);
+        var rt;
 
+        console.log(report_obj);
+
+        rt = await new_report(report_obj); //신고성공 or 에러메세지 반환
+        console.log(rt);
+
+        res.send(rt);
+    } catch (error) {
+        rt = `@/makeNewReport: ${error.message}`;
+    }
     res.send(rt);
+
     console.log("@@@@@@@@@@@@@@@@@@@@ end makeNewReport @@@@@@@@@@@@@@@@@@@@");
 });
 
@@ -103,7 +115,7 @@ async function show_all(two) {
         var len = rows.length;
         rt.ok = true;
         rt.result.data = rows;
-        rt.result.cnt = len;
+        rt.result.total = len;
 
         await connection.commit();
         connection.release();
@@ -387,5 +399,4 @@ async function add_opinion(report_obj, conn) {
 app.listen(port, () => console.log(`Server Running. . .[포트 ${port}번]`));
 
 // 잘못된 파라매터 입력들어왔을 떄 막는 방법?
-// total 주기
 // swagger
