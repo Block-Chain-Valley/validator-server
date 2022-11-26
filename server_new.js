@@ -81,12 +81,6 @@ async function show_all(two) {
         result: {},
     };
 
-    console.log(`@@@@@@@@@@@@@${two}`);
-    console.log(`@@@@@@@@@@@@@${two.chain_id}`);
-    console.log(`@@@@@@@@@@@@@${two.address}`);
-    console.log(`@@@@@@@@@@@@@${!two.chain_id}`);
-    console.log(`@@@@@@@@@@@@@${!two.address}`);
-
     let connection = null;
     try {
         connection = await pool.getConnection();
@@ -106,8 +100,8 @@ async function show_all(two) {
             var len = rows.length;
             rt.ok = true;
             rt.msg = `show_all() 정상실행[report 테이블 전체]`;
-            rt.result.data = rows;
             rt.result.total = len;
+            rt.result.data = rows;
         } else {
             if (two.chain_id && two.address) {
                 sql = `SELECT R.PROJECT_NAME, A.CHAIN_ID, A.ADDRESS, A.URL, R.REASON, A.REPORT_CNT, A.SAFE_CNT
@@ -125,8 +119,8 @@ async function show_all(two) {
                 var len = rows.length;
                 rt.ok = true;
                 rt.msg = `show_all() 정상실행[chain_id: ${two.chain_id} / address: ${two.address}]`;
-                rt.result.data = rows;
                 rt.result.total = len;
+                rt.result.data = rows;
             } else {
                 throw new Error(`미입력 데이터 존재: [chain_id: ${two.chain_id} / address: ${two.address}]`);
             }
