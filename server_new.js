@@ -65,7 +65,7 @@ async function show_all(two) {
     let rt = {
         ok: false,
         msg: "",
-        result: null,
+        result: {},
     };
 
     let connection = null;
@@ -100,8 +100,10 @@ async function show_all(two) {
         }
 
         const [rows] = await connection.query(sql);
+        var len = rows.length;
         rt.ok = true;
-        rt.result = rows;
+        rt.result.data = rows;
+        rt.result.cnt = len;
 
         await connection.commit();
         connection.release();
@@ -385,3 +387,5 @@ async function add_opinion(report_obj, conn) {
 app.listen(port, () => console.log(`Server Running. . .[포트 ${port}번]`));
 
 // 잘못된 파라매터 입력들어왔을 떄 막는 방법?
+// total 주기
+// swagger
