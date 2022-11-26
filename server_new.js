@@ -38,7 +38,7 @@ app.get("/showAll", cors(), async (req, res) => {
         }
 
         var temp = JSON.parse(JSON.stringify(rt));
-        temp.result = "길어서생략";
+        temp.result = `${rt.result.total}개 행 리턴`;
         console.log(temp);
     } catch (error) {
         rt = `@/showAll: ${error.message}`;
