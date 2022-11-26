@@ -61,8 +61,6 @@ app.get("/makeNewReport", cors(), async (req, res) => {
 
         rt = await new_report(report_obj); //신고성공 or 에러메세지 반환
         console.log(rt);
-
-        res.send(rt);
     } catch (error) {
         rt = `@/makeNewReport: ${error.message}`;
     }
