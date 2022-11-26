@@ -109,7 +109,7 @@ async function show_all(two) {
             rt.result.data = rows;
             rt.result.total = len;
         } else {
-            if (!two.chain_id && !two.address) {
+            if (two.chain_id && two.address) {
                 sql = `SELECT R.PROJECT_NAME, A.CHAIN_ID, A.ADDRESS, A.URL, R.REASON, A.REPORT_CNT, A.SAFE_CNT
                 FROM ADDRESS A
                 INNER JOIN REPORT R
