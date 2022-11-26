@@ -82,6 +82,10 @@ async function show_all(two) {
     };
 
     console.log(`@@@@@@@@@@@@@${two}`);
+    console.log(`@@@@@@@@@@@@@${two.chain_id}`);
+    console.log(`@@@@@@@@@@@@@${two.address}`);
+    console.log(`@@@@@@@@@@@@@${!two.chain_id}`);
+    console.log(`@@@@@@@@@@@@@${!two.address}`);
 
     let connection = null;
     try {
