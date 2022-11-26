@@ -95,33 +95,41 @@ async function show_all(two) {
             AND R.PROJECT_NAME IS NOT NULL
             AND R.REASON IS NOT NULL`;
 
+            const [rows] = await connection.query(sql);
+            var len = rows.length;
+            rt.ok = true;
             rt.msg = `show_all() 정상실행[report 테이블 전체]`;
+            rt.result.data = rows;
+            rt.result.total = len;
         } else {
-            sql = `SELECT R.PROJECT_NAME, A.CHAIN_ID, A.ADDRESS, A.URL, R.REASON, A.REPORT_CNT, A.SAFE_CNT
-            FROM ADDRESS A
-            INNER JOIN REPORT R
-            ON A.CHAIN_ID = R.CHAIN_ID
-            AND A.ADDRESS = R.ADDRESS
-            AND A.URL = R.URL
-            AND R.PROJECT_NAME IS NOT NULL
-            AND R.REASON IS NOT NULL
-            AND A.CHAIN_ID = "${two.chain_id}"
-            AND A.ADDRESS = "${two.address}"`;
+            if (!two.chain_id && !two.address) {
+                sql = `SELECT R.PROJECT_NAME, A.CHAIN_ID, A.ADDRESS, A.URL, R.REASON, A.REPORT_CNT, A.SAFE_CNT
+                FROM ADDRESS A
+                INNER JOIN REPORT R
+                ON A.CHAIN_ID = R.CHAIN_ID
+                AND A.ADDRESS = R.ADDRESS
+                AND A.URL = R.URL
+                AND R.PROJECT_NAME IS NOT NULL
+                AND R.REASON IS NOT NULL
+                AND A.CHAIN_ID = "${two.chain_id}"
+                AND A.ADDRESS = "${two.address}"`;
 
-            rt.msg = `show_all() 정상실행[chain_id / address]`;
+                const [rows] = await connection.query(sql);
+                var len = rows.length;
+                rt.ok = true;
+                rt.msg = `show_all() 정상실행[chain_id: ${two.chain_id} / address: ${two.address}]`;
+                rt.result.data = rows;
+                rt.result.total = len;
+            } else {
+                throw new Error(`미입력 데이터 존재: [chain_id: ${two.chain_id} / address: ${two.address}]`);
+            }
         }
-
-        const [rows] = await connection.query(sql);
-        var len = rows.length;
-        rt.ok = true;
-        rt.result.data = rows;
-        rt.result.total = len;
 
         await connection.commit();
         connection.release();
     } catch (error) {
         rt.ok = false;
-        rt.msg = `show_all() 에러[@show_all(): ${error}]`;
+        rt.msg = `@show_all(): ${error.message}`;
         rt.result = error.message;
         if (connection !== null) {
             await connection.rollback(); //rollback
