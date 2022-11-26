@@ -24,14 +24,18 @@
 
 ### ✅ 타 서비스 API 사용을 통한 신뢰성 제고 
 Chainsight, Alchemy와 같이 위험도가 높은 주소 목록 API를 제공하는 서비스를 사용합니다. 이를 통해 Validator의 자체 DB가 악의적인 신고 등으로 인해 오염되었을 때 생길 수 있는 단일 실패 지점을 예방합니다. 
+
 <img width="496" alt="체인사이트" src="https://user-images.githubusercontent.com/95950146/204106859-a443b2c5-2869-4338-8e61-1fe7051a92a5.png">
+
 <img width="647" alt="알케미" src="https://user-images.githubusercontent.com/95950146/204106860-7aa8c1e1-b4ff-4cf2-993f-7b94fd52fc53.png">
 
 
 ## 로드맵 🎯
 ### 🚩UI 개편
 현재는 메타마스크에서 커스텀 UI를 지원하지 않습니다. 이 때문에 위험과 관련된 정보를 단순히 문자열로만 제공할 수 밖에 없다는 한계를 가지고 있습니다. 메타마스크 측에서 UI 커스텀 기능을 제공하는 것을 로드맵으로 삼고 있기 때문에, 이에 맞추어 Validator 또한 사용자 친화적인 UI를 선보일 예정입니다. 
+
 <img width="376" alt="커스텀UI" src="https://user-images.githubusercontent.com/95950146/204106861-e8cfc6ab-9158-45a5-84bf-d1c5548e91d5.png">
+
 만약 목표 기간(2022.12.) 내에 커스텀 UI를 지원하지 않을 경우, 별도의 크롬 확장프로그램과 Snap을 연결시켜 알림 서비스로 대체하는 방식으로 문제를 해결할 계획입니다. 
 
 ### 🚩Business
@@ -44,8 +48,12 @@ Validator의 추후 3개월 서비스 제공 계획은 다음과 같습니다.
 
 ### 🫶 Members
 |  🎨 UIUX  |  💻 FRONT  |  ⚙️ BACK |  ⚙️ BACK  |
+
 <img width="292" alt="KakaoTalk_Image_2022-11-27-04-36-29_004" src="https://user-images.githubusercontent.com/95950146/204106875-63055a67-1389-4b5d-9d37-ab67891c50a3.png">
+
 <img width="287" alt="KakaoTalk_Image_2022-11-27-04-36-29_003" src="https://user-images.githubusercontent.com/95950146/204106876-36ef3a28-6af5-4464-b661-2ded23dc4d37.png">
+
 <img width="288" alt="KakaoTalk_Image_2022-11-27-04-36-29_002" src="https://user-images.githubusercontent.com/95950146/204106877-660751fa-ac80-4570-b7e9-28e98c8db2ca.png">
+
 <img width="298" alt="KakaoTalk_Image_2022-11-27-04-36-28_001" src="https://user-images.githubusercontent.com/95950146/204106878-0dcfd0c0-b136-47f0-a8a2-7407f97596fa.png">
 
