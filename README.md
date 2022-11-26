@@ -50,13 +50,6 @@ Validator의 추후 3개월 서비스 제공 계획은 다음과 같습니다.
 > 만약 당신이 우리의 팀명을 dreamplus가 아닌가 생각하셨다면, 당신은 잠재적인 사기 피해자입니다. 
 
 ### 🫶 Members
-|  🎨 UIUX  |  💻 FRONT  |  ⚙️ BACK |  ⚙️ BACK  |
 
-<img width="292" alt="KakaoTalk_Image_2022-11-27-04-36-29_004" src="https://user-images.githubusercontent.com/95950146/204106875-63055a67-1389-4b5d-9d37-ab67891c50a3.png">
-
-<img width="287" alt="KakaoTalk_Image_2022-11-27-04-36-29_003" src="https://user-images.githubusercontent.com/95950146/204106876-36ef3a28-6af5-4464-b661-2ded23dc4d37.png">
-
-<img width="288" alt="KakaoTalk_Image_2022-11-27-04-36-29_002" src="https://user-images.githubusercontent.com/95950146/204106877-660751fa-ac80-4570-b7e9-28e98c8db2ca.png">
-
-<img width="298" alt="KakaoTalk_Image_2022-11-27-04-36-28_001" src="https://user-images.githubusercontent.com/95950146/204106878-0dcfd0c0-b136-47f0-a8a2-7407f97596fa.png">
+<img width="1145" alt="스크린샷 2022-11-27 오전 5 18 13" src="https://user-images.githubusercontent.com/95950146/204107584-b1ef48ab-95b1-4174-981c-f80829b97ae8.png">
 
