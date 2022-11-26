@@ -29,6 +29,7 @@ app.get("/showAll", cors(), async (req, res) => {
         var rt;
 
         console.log(`hasOwnProperty("two") : ${isTwo}`);
+        console.log(params);
 
         if (isTwo) {
             rt = await show_all(JSON.parse(params.two));
@@ -80,6 +81,8 @@ async function show_all(two) {
         result: {},
     };
 
+    console.log(`@@@@@@@@@@@@@${two}`);
+
     let connection = null;
     try {
         connection = await pool.getConnection();
@@ -129,7 +132,7 @@ async function show_all(two) {
         connection.release();
     } catch (error) {
         rt.ok = false;
-        rt.msg = `@show_all(): ${error.message}`;
+        rt.msg = `@show_all() 에러발생`;
         rt.result = error.message;
         if (connection !== null) {
             await connection.rollback(); //rollback
