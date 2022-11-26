@@ -190,7 +190,7 @@ async function new_report(report_obj) {
 async function no_same_report(report_obj) {
     var cnt;
 
-    var sql = ` SELECT COUNT(*) AS CNT FROM ADDRESS WHERE CHAIN_ID = "${report_obj.data.chain_id}" AND ADDRESS = "${report_obj.data.address}" AND URL = "${report_obj.data.url}"`;
+    var sql = ` SELECT COUNT(*) AS CNT FROM REPORT WHERE CHAIN_ID = "${report_obj.data.chain_id}" AND ADDRESS = "${report_obj.data.address}" AND URL = "${report_obj.data.url}"`;
 
     let connection = null;
     try {
